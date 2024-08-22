@@ -1,0 +1,27 @@
+.popup {
+    width : 25vw;
+    border: 1px solid grey;
+    border-radius: 2%;
+    padding: 2%;
+    margin: 0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+.words {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.word {
+    background-color: grey;
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
