@@ -1,0 +1,120 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.add-button {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: fixed;
+}
+
+.table th, .table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f4f4f4;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-cell {
+  padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.key-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.key-text {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.private-key {
+  margin-top: 5px;
+}
+
+.text-ellipsis {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.copy-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  color: #007bff;
+}
+
+.private-key-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  color: #007bff;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+}
+
+.refresh-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  color: #007bff;
+}
+
+.send-money {
+  display: flex;
+  align-items: center;
+}
+
+.send-money input {
+  padding: 6px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100px;
+}
+
+.send-button {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #218838;
+}
