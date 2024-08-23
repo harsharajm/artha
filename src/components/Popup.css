@@ -1,9 +1,12 @@
+
+
 .popup {
-    width : 25vw;
+    width : 50vw;
     border: 1px solid grey;
     border-radius: 2%;
     padding: 2%;
     margin: 0;
+    box-sizing: border-box;
 }
 
 h3 {
@@ -12,16 +15,17 @@ h3 {
 
 .words {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0,1fr));
     gap: 5px;
 }
 
 .word {
-    background-color: grey;
     padding: 0;
-    border: 1px solid black;
-    border-radius: 10%;
+    border: 1px solid grey;
+    border-radius: 7%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+
 }

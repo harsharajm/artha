@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaEye, FaEyeSlash, FaSyncAlt, FaPlus, FaCopy } from 'react-icons/fa';
 import './Dashboard.css';
 
-const Dashboard = () => {
+const Dashboard = ({setView}) => {
   const [tableData, setTableData] = useState([]);
 
   const publicKeyGenerator = () => {

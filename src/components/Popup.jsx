@@ -1,36 +1,32 @@
-import React from 'react'
-import './Popup.css'
+import React, { useState, useEffect } from 'react';
+import './Popup.css';
+import { generateMnemonic } from 'bip39';
+import Dashboard from './Dashboard';
+function Popup({setView}) {
+  const [mnemonic, setMnemonic] = useState('');
 
-function Popup() {
+  // Use useEffect to avoid setting state directly in the render phase
+  useEffect(() => {
+    const generatedMnemonic = generateMnemonic();
+    setMnemonic(generatedMnemonic);
+  }, []); // Empty dependency array ensures this runs only once
 
-  function generateMnemonic(){
-    const words = ["word1","word2","word3",
-      "word4","word5","word6",
-      "word7","word8","word9",
-      "word10","word11","word12"];
-    return words;
-  }
-
-    const words = generateMnemonic();
   return (
-    <div className='popup'>
+    <>
+    <div className="popup">
       <h3>Recovery Phrase</h3>
-      <div className='words'>
-        <div className='word'>{words[0]}</div>
-        <div className='word'>{words[1]}</div>
-        <div className='word'>{words[2]}</div>
-        <div className='word'>{words[3]}</div>
-        <div className='word'>{words[4]}</div>
-        <div className='word'>{words[5]}</div>
-        <div className='word'>{words[6]}</div>
-        <div className='word'>{words[7]}</div>
-        <div className='word'>{words[8]}</div>
-        <div className='word'>{words[9]}</div>
-        <div className='word'>{words[10]}</div>
-        <div className='word'>{words[11]}</div>
+      <div className="words">
+        {mnemonic.split(' ').map((word, index) => (
+          <div className="word" key={index}>{word}</div>
+    
+        ))}
+        <button onClick={()=>setView('dashboard')}>Continue</button>
       </div>
     </div>
-  )
+    </>
+
+    
+  );
 }
 
-export default Popup
+export default Popup;
