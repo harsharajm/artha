@@ -9,22 +9,9 @@ function App() {
 
   return (
     <>
-      {view === 'home' && (
-        <>
-          <Home setView = {setView}/>
-        </>
-      )}
-
-      {view === 'popup' && (
-        <>
-          <Popup setView = {setView}/>
-        </>
-      )}
-      {view === 'dashboard' && (
-        <>
-          <Dashboard setView = {setView}/>
-        </>
-      )}
+      {view === 'home' && (<Home setView = {setView}/>)}
+      {view === 'popup' && (<Popup setView = {setView}/>)}
+      {view === 'dashboard' && (<Dashboard setView = {setView}/>)}
     </>
   );
 }
