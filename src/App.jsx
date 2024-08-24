@@ -1,4 +1,5 @@
 import './App.css';
+import Home from './components/Home.jsx'
 import Popup from './components/Popup';
 import Dashboard from './components/Dashboard.jsx';
 import { useState } from 'react';
@@ -6,19 +7,15 @@ import { useState } from 'react';
 function App() {
   const [view, setView] = useState('home');
 
-  const generate = () => {
-    setView('mnemonic');
-  };
-
   return (
     <>
       {view === 'home' && (
         <>
-          <button onClick={generate}>Generate Mnemonic</button>
+          <Home setView = {setView}/>
         </>
       )}
 
-      {view === 'mnemonic' && (
+      {view === 'popup' && (
         <>
           <Popup setView = {setView}/>
         </>
