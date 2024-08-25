@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './Popup.css';
 import { generateMnemonic } from 'bip39';
 
@@ -16,10 +15,10 @@ function Popup({setView}) {
     
       </div>
       <div className="words">
-        {mnemonic.split(' ').map((word) => (
-          <div className="word">{word}</div>
-    
-        ))}
+        {mnemonic.split(' ').map((word) => 
+        (<div className="word">{word}</div>)
+        )
+        }
         <button onClick={()=>setView('dashboard')}>Continue</button>
       </div>
 
