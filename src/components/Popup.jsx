@@ -19,7 +19,7 @@ function Popup({setView}) {
         (<div className="word">{word}</div>)
         )
         }
-        <button onClick={()=>setView('dashboard')}>Continue</button>
+        <button onClick={()=>setView('wallets')}>Continue</button>
       </div>
 
     </div>

@@ -1,17 +1,17 @@
 import './App.css';
 import Home from './components/Home.jsx'
 import Popup from './components/Popup';
-import Dashboard from './components/Dashboard.jsx';
 import { useState } from 'react';
+import Wallets from './components/Wallets.jsx';
 
 function App() {
-  const [view, setView] = useState('home');
+  const [view, setView] = useState('wallets');
 
   return (
     <>
       {view === 'home' && (<Home setView = {setView}/>)}
       {view === 'popup' && (<Popup setView = {setView}/>)}
-      {view === 'dashboard' && (<Dashboard setView = {setView}/>)}
+      {view === 'wallets' && (<Wallets setView = {setView}/>)}
     </>
   );
 }
