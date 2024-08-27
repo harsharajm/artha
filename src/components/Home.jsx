@@ -3,8 +3,7 @@ function Home({setView}) {
     <>
     <button onClick={
         ()=>{setView('popup')}
-
-    }>Generate Mnemonic</button>
+      }>Generate Mnemonic</button>
     </>
   )
 }

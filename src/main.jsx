@@ -5,6 +5,12 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <div style={{
+      display:'flex',
+      justifyContent:'center',
+      minHeight: '100vh',
+      backgroundColor : '#0E0E0E'
+
+    }}><App></App></div>
   </StrictMode>,
 )
