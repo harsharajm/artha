@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Wallets from './components/Wallets.jsx';
 
 function App() {
-  const [view, setView] = useState('wallets');
+  const [view, setView] = useState('home');
   return (
     <div className='window'>
       {view === 'home' && (<Home setView = {setView}/>)}

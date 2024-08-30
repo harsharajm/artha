@@ -9,7 +9,7 @@ import Wallet from "./Wallet";
 import Details from "./Details";
 import './Wallets.css';
 
-function Wallets() {
+function Wallets({mnemonic}) {
   const mnemonic = 'chapter they cage donate misery august spawn budget tool hunt valve caught'; // For testing. Remove and add as props.
 
   const [solPublicKeys, setSolPublicKeys] = useState([]);
