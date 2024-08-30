@@ -1,11 +1,20 @@
-.wallets_menu{
-    height: 100% ;
+.wallets_menu {
+    height: 100%;
     width: 100%;
 }
 
-.switch_wallets{
+.switch_wallets {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 4px;
-    
+    margin-bottom: 20px;
+}
+
+.wallet-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sol-wallets, .eth-wallets {
+    width: 48%;
 }
