@@ -1,61 +1,84 @@
 import solana_logo from '../images/solana_logo.png';
 import eth_logo from '../images/eth_logo.png';
-import copy_icon from '../images/copy_icon.png';
-import eye_icon from '../images/eye_icon.png';
 import { useState } from 'react';
+import copy_icon from '../images/copy_icon.svg';
 
-function Wallet({ image, publicKey, privateKey }) {
-  const [visibility, setVisibility] = useState(false);
+
+function Wallet({ image, publicKey}) {
+  const [hovering,setHover] = useState(false);
+  const [copied,setCopied] = useState(false);
 
   return (
     <div style={{
       display: 'flex',
       flexDirection: 'column', 
-      alignItems: 'stretch', 
-      backgroundColor : '#181818',
-      border: '1px solid #ccc',
       borderRadius: '50px',
       width: '50%',
+      margin : '4px 0',
+      boxSizing : 'border-box',
+      backgroundColor : hovering ? '#252526':'#0E0E0E',
+      transition : 'background-color ease-in 300ms'
+    }}
+    
+    onMouseEnter={()=>setHover(true)}
+    onMouseLeave={()=>setHover(false)}
 
-    }}>
+    >
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        height: '100%'
+        height: '100%',
+        justifyContent : 'space-between '
+
       }}>
-        <img
-          src={image ? solana_logo : eth_logo}
-          style={{
-            height: '3em',
-            width: '3em',
-            borderRadius: '50%',
-            marginRight: '1em'
-          }}
-          alt="logo"
-        />
+      <img
+        src={image ? solana_logo : eth_logo}
+        style={{
+          height: '3em',
+          width: '3em',
+          borderRadius: '50%',
+          marginRight: '1em'
+        }}
+        alt="logo"
+
+      />
+
         <div>
           <div style={{
             fontSize: '0.7em'
           }}>
-            {publicKey.slice(0,4)+'....'+publicKey.slice(-4)}
+            {copied?"Copied to clipboard": publicKey.slice(0,4)+'....'+publicKey.slice(-4)}
           </div>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            fontSize: '0.8em',
-
-
-
+            fontSize: '0.8em'
           }}>
 
           </div>
         </div>
+        <div style={{display:'flex'}}>
+        <img onClick={()=>{
+          navigator.clipboard.writeText(publicKey).then(()=>{
+            setCopied(x=>!x);
+            setTimeout(()=>setCopied(x=>!x),2000)
+          })
+        }} style={{height:'1em',width : '1em'}} src={copy_icon} alt="copy  " />
         <button style={{
-          fontSize:'0.5em',
-          height:'width'
+          all : 'unset',
+          fontSize:'0.9em',
+          height : '45px',
+          width : '45px',
+          borderRadius : '100%',
+          backgroundColor : "#005BA4",
+          display:'flex',
+          justifyContent:'center',
+          alignItems:'center',
+   
         }}>
           Send
         </button>
+        </div>
       </div>
     </div>
   );

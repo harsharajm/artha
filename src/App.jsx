@@ -6,7 +6,6 @@ import Wallets from './components/Wallets.jsx';
 
 function App() {
   const [view, setView] = useState('wallets');
-
   return (
     <div className='window'>
       {view === 'home' && (<Home setView = {setView}/>)}

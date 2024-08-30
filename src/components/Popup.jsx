@@ -32,7 +32,7 @@ function Popup({setView}) {
         (<div className="word">{word}</div>)
         )
         }
-      </div>
+      </div>  
       <button style={{
         marginTop:'5px',
         marginBottom:'70px'

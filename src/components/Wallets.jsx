@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { mnemonicToSeed } from "bip39";
 import { derivePath } from 'ed25519-hd-key';
-import nacl from 'tweetnacl';
+import  nacl from 'tweetnacl';
 import { Keypair } from '@solana/web3.js';
 import bs58 from 'bs58';
 import Wallet from "./Wallet";
+import Details from "./Details";
 import './Wallets.css';
 
 
@@ -18,6 +19,7 @@ function Wallets() {
 
   return (
     <div className="wallets_menu">
+      <Details></Details>
 
       <div className="switch_wallets">
    
