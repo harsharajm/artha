@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 import { Connection, PublicKey } from '@solana/web3.js';
 import Toggle from './Toggle';
+import Send from './Send';
 
 function Details({ selectedWallet, testMode,setTestMode }) {
     const [rotate, setRotate] = useState(false);
@@ -14,6 +15,7 @@ function Details({ selectedWallet, testMode,setTestMode }) {
     const [showPrivateKey,setShowPrivateKey] = useState(false);
     const [fetch,setFetch] = useState(true);
     const [get,setGet] = useState(false);
+    const [sendMenu,setSendMenu] = useState(false);
 
     useEffect(() => {
         async function fetchBalance() {
@@ -36,6 +38,7 @@ function Details({ selectedWallet, testMode,setTestMode }) {
 
     return (
         <div className="details">
+            {sendMenu?<Send setSendMenu={setSendMenu}></Send>:''}
             <img src={settings_icon}
                 style={{margin: '6px',
                     width:'1.5em',
@@ -69,14 +72,14 @@ function Details({ selectedWallet, testMode,setTestMode }) {
 
                         <div style={{display:'flex',justifyContent:'center'}}>
                             <div className='option' onClick={()=>setFetch(x=>!x)}><img className='up' src={update_icon} alt="" />Refresh</div>
-                            <div className='option'><img className='up' src={arrow_icon} alt="" />Send</div>
+                            <div className='option' onClick={()=>{setSendMenu(true)}}><img className='up' src={arrow_icon} alt="" />Send</div>
                             <div className='option' onClick={()=>{
                                 setGet(x=>!x);
                                 setTimeout(()=>{setGet(x=>!x)},3000)
                             }}><img className='down' src={arrow_icon} alt="" />Get</div>
                         </div>
 
-                        <p>Wallet Address: <span id='public'>{selectedWallet.publicKey}</span></p>
+                        <p style={{margin:'5px'}}>Wallet Address: <span id='public'>{selectedWallet.publicKey}</span></p>
                         {showPrivateKey?<p>Private Key: <span id='private'>{selectedWallet.privateKey}</span></p>:''}
                     </>
                 ) : (
