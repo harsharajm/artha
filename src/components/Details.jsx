@@ -1,12 +1,19 @@
 import './Details.css'
 import settings_icon from '../images/settings_icon.svg';
+import arrow_icon from '../images/arrow_icon.svg';
+import update_icon from '../images/update_icon.svg';
 import { useState, useEffect } from 'react';
 import { ethers } from "ethers";
 import { Connection, PublicKey } from '@solana/web3.js';
+import Toggle from './Toggle';
 
-function Details({ selectedWallet, testMode }) {
+function Details({ selectedWallet, testMode,setTestMode }) {
     const [rotate, setRotate] = useState(false);
+    const [settings,setSettings] = useState(false);
     const [balance, setBalance] = useState('Select a Wallet');
+    const [showPrivateKey,setShowPrivateKey] = useState(false);
+    const [fetch,setFetch] = useState(true);
+    const [get,setGet] = useState(false);
 
     useEffect(() => {
         async function fetchBalance() {
@@ -25,30 +32,52 @@ function Details({ selectedWallet, testMode }) {
             }
         }
         fetchBalance();
-    }, [selectedWallet, testMode]);
+    }, [selectedWallet, testMode,fetch]);
 
     return (
         <div className="details">
             <img src={settings_icon}
-                style={{
-                    position: 'static',
-                    margin: '6px',
-                    transition: 'all ease-in 0.25s',
-                    transform: rotate ? 'rotate(45deg)' : 'rotate(0deg)'
+                style={{margin: '6px',
+                    width:'1.5em',
+                    height:'1.5em',
+                    transform : rotate?'rotate(45deg)':'rotate(0deg)',
+                    transition : 'transform ease-in .2s'
+                
                 }}
-                onMouseEnter={() => {
-                    setRotate(true);
-                    setTimeout(() => { setRotate(false) }, 250)
+                onMouseEnter={()=>{
+                    setRotate(x=>!x)
+                    setTimeout(()=>{setRotate(x=>!x)},200)
                 }}
+                onClick={()=>{
+                    setSettings(x=>!x);
+                }}  
+                
                 alt=""
             />
-            <div>
+            {settings?<div className='setting_menu'>
+                <Toggle text={"Show Private Key"} initial={false} toggle={()=>{setShowPrivateKey(x=>!x)}}/> 
+                <Toggle text={"Testnet RPC"} initial={true} toggle={()=>{setTestMode(x=>!x)}} /> 
+                
+            
+            </div>:''}
+            
+
+            <div className='info'>
                 {selectedWallet ? (
                     <>
-                        <p>Type: {selectedWallet.type}</p>
-                        <p>Public Key: {selectedWallet.publicKey.slice(0, 4) + '...' + selectedWallet.publicKey.slice(-4)}</p>
-                        <p>Balance: {balance}</p>
-                        <p>Network: {testMode ? 'Testnet' : 'Mainnet'}</p>
+                        <p id='balance'>{balance}</p>
+
+                        <div style={{display:'flex',justifyContent:'center'}}>
+                            <div className='option' onClick={()=>setFetch(x=>!x)}><img className='up' src={update_icon} alt="" />Refresh</div>
+                            <div className='option'><img className='up' src={arrow_icon} alt="" />Send</div>
+                            <div className='option' onClick={()=>{
+                                setGet(x=>!x);
+                                setTimeout(()=>{setGet(x=>!x)},3000)
+                            }}><img className='down' src={arrow_icon} alt="" />Get</div>
+                        </div>
+
+                        <p>Wallet Address: <span id='public'>{selectedWallet.publicKey}</span></p>
+                        {showPrivateKey?<p>Private Key: <span id='private'>{selectedWallet.privateKey}</span></p>:''}
                     </>
                 ) : (
                     <p>Select a wallet to view details</p>

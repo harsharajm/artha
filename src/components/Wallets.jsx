@@ -52,13 +52,13 @@ function Wallets({mnemonic}) {
     setEthPrivateKeys(prev => [...prev, privateKey]);  
   };
 
-  const handleWalletClick = (type, publicKey) => {
-    setSelectedWallet({ type, publicKey });
+  const handleWalletClick = (type, publicKey, privateKey) => {
+    setSelectedWallet({ type, publicKey, privateKey });
   };
 
   return (
     <div className="wallets_menu">
-      <Details selectedWallet={selectedWallet} testMode={testMode} />
+      <Details selectedWallet={selectedWallet} testMode={testMode} setTestMode={setTestMode} />
 
       <div className="switch_wallets">
         <button onClick={generateSolanaWallet}>SOL</button>
@@ -72,7 +72,7 @@ function Wallets({mnemonic}) {
               image={true} 
               publicKey={e.toBase58()} 
               privateKey={bs58.encode(solPrivateKeys[i])}
-              onClick={() => handleWalletClick('SOL', e.toBase58())}
+              onClick={() => handleWalletClick('SOL', e.toBase58(),bs58.encode(solPrivateKeys[i]))}
             />
           ))}
         </div>
@@ -83,7 +83,7 @@ function Wallets({mnemonic}) {
               image={false} 
               publicKey={e} 
               privateKey={ethPrivateKeys[i]}
-              onClick={() => handleWalletClick('ETH', e)}
+              onClick={() => handleWalletClick('ETH', e,ethPrivateKeys[i])}
             />
           ))}
         </div>
