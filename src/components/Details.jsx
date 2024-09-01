@@ -44,7 +44,8 @@ function Details({ selectedWallet, testMode,setTestMode }) {
                     width:'1.5em',
                     height:'1.5em',
                     transform : rotate?'rotate(45deg)':'rotate(0deg)',
-                    transition : 'transform ease-in .2s'
+                    transition : 'transform ease-in .2s',
+                    zIndex : '2'
                 
                 }}
                 onMouseEnter={()=>{

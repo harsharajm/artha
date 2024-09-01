@@ -25,8 +25,8 @@ function Send({setSendMenu}) {
 
         
     }}>
-        <input  style={{fontSize:'1.5em',width:'98%',color:'black'}} className='destination' type="text" placeholder='Paste Destination Wallet Address' />
-        <input style={{fontSize:'1.5em',width:'98%',color:'black'}} type="text" className="amounnt" placeholder='Enter amount you want to Transfer'/>
+        <input  style={{fontSize:'1.5em',width:'98%',color:'black'}} className='destination' type="text" placeholder='Paste destination wallet address' />
+        <input style={{fontSize:'1.5em',width:'98%',color:'black'}} type="text" className="amounnt" placeholder='Enter amount you want to transfer'/>
         <button>Proceed to Pay</button>
         <h5 style={{
             cursor:'pointer'

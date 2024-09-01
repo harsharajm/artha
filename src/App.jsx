@@ -10,7 +10,7 @@ function App() {
   const [mnemonic, setMnemonic] = useState('');
   return (
     <div className='window'>
-      {view === 'home' && (<Home setView = {setView}/>)}
+      {view === 'home' && (<Home setView = {setView} setMnemonic={setMnemonic}/>)}
       {view === 'popup' && (<Popup setView={setView} setMnemonic={setMnemonic}/>)}
       {view === 'wallets' && (<Wallets mnemonic={mnemonic}/>)}
     </div>
